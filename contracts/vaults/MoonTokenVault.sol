@@ -46,14 +46,10 @@ contract MoonTokenVault is BaseVault {
         lpToken = _lpToken;
         moonMasterChefPid = _moonChefPid;
         feeReceiver = _feeReceiver;
-        token0 = IUniswapV2Pair(lpToken).token0();
-        token1 = IUniswapV2Pair(lpToken).token1();
         path0 = _path0;
         path1 = _path1;
         IERC20(lpToken).approve(moonMasterChef, uint256(-1));
         IERC20(moonToken).approve(moonRouter, uint256(-1));
-        IERC20(token0).approve(moonRouter, uint256(-1));
-        IERC20(token1).approve(moonRouter, uint256(-1));
     }
 
     function _harvest() internal override {
